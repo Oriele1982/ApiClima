@@ -7,7 +7,7 @@ $(document).ready(function(){
 	var imagen = $('.img-responsive');
 	var escondido = $('#escondido');
 
-	var url = 'https://api.darksky.net/forecast/';
+	var url = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/';
 	var key = 'e13fc8c9ff2687b5d99c22c9ec0c84b9';
 	var coords = {
 		scl: '-33.4488897,-70.6692655',
@@ -27,7 +27,7 @@ $(document).ready(function(){
 			url: url + key + '/' + coords[$(this).val()] + '?' + queryParams[0] + '&' + queryParams[1] + '&' + queryParams[2],
 			method: 'GET'
 		}).then(function(data) {
-			resumen.text(parseInt(data.currently.temperature) + '°' + data.currently.sumary);
+			resumen.text(parseInt(data.currently.temperature) + '°' + data.currently.summary);
 			sensacion.text(data.currently.apparentTemperature + '°');
 			probabilidad.text(data.currently.precipProbability * 100 + '%');
 			humedad.text(data.currently.humidity * 100 + '%');
